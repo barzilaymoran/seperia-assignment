@@ -1,0 +1,176 @@
+/* General */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.ca-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* Search Bar */
+
+.ca-container form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    Margin-top: 20px;
+}
+
+.ca-container input[type="text"] {
+    padding: 8px 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.ca-container button {
+    padding: 8px 16px;
+    background-color: #6788ad;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: Verdana, sans-serif;
+}
+
+.ca-container button:hover {
+    background-color: #517094;
+}
+
+
+/* Table */
+
+.ca-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ca-container thead {
+    background-color: #6788ad;
+    color: white;
+}
+
+.ca-container th, .ca-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+.ca-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.ca-container tbody tr:hover {
+    background-color: #eef4fc;
+}
+
+.ca-container td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+/* Gallery */
+
+.ca-gallery-row {
+    display: none;
+    background-color: #f0f4f8;
+}
+
+.ca-gallery-images {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+}
+
+.ca-gallery-images img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.ca-gallery-btn {
+    padding: 6px 12px;
+    background-color: #6788ad;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ca-gallery-btn:hover {
+    background-color: #517094;
+}
+
+.ca-pagination {
+    display: flex;
+    gap: 6px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.ca-pagination a {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #6788ad;
+}
+
+.ca-pagination a:hover {
+    background-color: #517094;
+    color: white;
+}
+
+.ca-pagination a.active {
+    background-color: #6788ad;
+    color: white;
+    font-weight: bold;
+    border-color: #6788ad;
+}
+
+.ca-pagination a.disabled {
+    color: #bbb;
+    border-color: #eee;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Messages */
+
+.ca-summary {
+    margin-bottom: 12px;
+    color: #666;
+    font-size: 14px;
+}
+
+.ca-error {
+    color: red;
+    margin-top: 20px;
+}
+
+.ca-empty {
+    color: #666;
+    margin-top: 20px;
+}

@@ -1,0 +1,7 @@
+# Web App
+web-app/venv/
+web-app/__pycache__/
+web-app/*.pyc
+
+# WordPress
+wordpress-plugin/compare-assignment/assets/*.log

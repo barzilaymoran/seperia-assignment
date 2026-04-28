@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Products</h1>
+
+        <!-- Search Bar -->
+        <form method="GET" action="/">
+            <input type="text" name="search" value="{{ search }}" placeholder="Search products...">
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Error -->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+
+        <!-- No Results -->
+        {% elif products|length == 0 %}
+            <p class="empty">No products found for "{{ search }}".</p>
+
+        <!-- Table -->
+        {% else %}
+            <p class="summary">Showing page {{ current_page }} of {{ total_pages }}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Brand</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Rating</th>
+                        <th>Stock</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td><img src="{{ product.thumbnail }}" alt="{{ product.title }}"></td>
+                        <td>{{ product.get('title', '') }}</td>
+                        <td>{{ product.get('brand', '') }}</td>
+                        <td>{{ product.get('description', '') }}</td>
+                        <td>{{ product.get('category', '') | capitalize}}</td>
+                        <td>{{ product.get('rating', '') }}</td>
+                        <td>{{ product.get('stock', '') }}</td>
+                        <td>${{ product.get('price', '') }}</td>
+                        <td>
+                            <button class="gallery-btn" data-id="{{ product.id }}">Gallery</button>
+                        </td>
+                    </tr>
+                    <tr id="gallery-{{ product.id }}" class="gallery-row">
+                        <td colspan="9">
+                            <div class="gallery-images">
+                                {% for image in product.images[:3] %}
+                                   <img src="{{ image }}" alt="{{ product.title }}">
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="/?search={{ search }}&page={{ current_page - 1 }}"
+                    class="{{ 'disabled' if current_page == 1 }}">← Prev</a>
+
+                {% for pageItem in range(1, total_pages + 1) %}
+                    <a href="/?search={{ search }}&page={{ pageItem }}"
+                       class="{{ 'active' if pageItem == current_page }}">{{ pageItem }}</a>
+                {% endfor %}
+
+                <a href="/?search={{ search }}&page={{ current_page + 1 }}"
+                    class="{{ 'disabled' if current_page == total_pages }}">Next →</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- JS Functionality -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
